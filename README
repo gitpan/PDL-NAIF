@@ -1,0 +1,32 @@
+If you don't know what JPL's NAIF toolkit is, this module isn't for
+you.
+
+If you do know, and want to use NAIF from within Perl, then this is
+for you.  At the moment,there are some problems. It's incomplete.  My
+first list of routines to port was chosen simply by going through my
+codes that use the NAIF toolkit and seeing what routines I used.  I've
+since been slowly going through the cspice source and porting routines
+as I go (I'm through the b's).  Eventually I'll port everything in
+NAIF that makes sense to port, and some things that don't.  Some of
+the routines have not yet been tested at all.  (Coming up with tests is
+harder than writing the PDL::PP code to interface with the routines.)
+
+If your spicelib.a and support.a aren't symlinked into /usr/local/lib
+with proper Unix library names, so that -L/usr/local/lib -lspicelib
+-lsupport work, you might need to edit Makefile.PL until it works for
+you.  You can set NAIF_INCLUDE in your environment to the path of the
+cspice include directory (if it isn't
+/usr/local/naif/C/cspice/include) and similarly NAIF_LIB could be used
+to point somewhere other than /usr/local/lib).
+
+Note to CPAN testers: even if you install the NAIF toolkit (something
+I don't recommend unless you're actually going to use it, because the
+NAIF developers don't use autoconf or make), you won't be able to test
+this at the moment.  I have a test.pl, and it works for me, but it
+depends on a bunch of kernels that I have installed locally but are
+too big to include in the distribution.  Eventually I'll produce some
+cut down kernels for testing purposes that can be included in the
+distribution.
+
+Paul Schinder
+schinder@leprss.gsfc.nasa.gov
